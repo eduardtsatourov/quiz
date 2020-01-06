@@ -25,21 +25,7 @@ class App extends React.Component {
     this.setState({showAnswer: !this.state.showAnswer})
   }
 
-  render () {
-    let start = this.state.started ? null : <button className="button button2 middle" onClick={this.selectRandomQuestion}>Start Quiz</button>;
-    let nextQuestion;
-
-    if (this.state.started) { nextQuestion = (
-      <div className="buttonDiv">
-        <button className="button button2" onClick={this.selectRandomQuestion}>Next Question</button>
-        <button
-        className={this.state.showAnswer ? "button button2 buttonRed" : "button button2"}
-        onClick={this.showAnswerHandler}>
-          {this.state.showAnswer ? "Hide Answers": "Show Answers"}
-        </button>
-      </div>)
-      } else {nextQuestion = null}
-      
+  renderQuestion = () => {
     let Question = null;
     let Answers = null;
 
@@ -87,7 +73,26 @@ class App extends React.Component {
         }
       }
     }
+    return [Question, Answers];
+  }
 
+  renderNextQuestion = () => {
+    if (this.state.started) { return (
+      <div className="buttonDiv">
+        <button className="button button2" onClick={this.selectRandomQuestion}>Next Question</button>
+        <button
+        className={this.state.showAnswer ? "button button2 buttonRed" : "button button2"}
+        onClick={this.showAnswerHandler}>
+          {this.state.showAnswer ? "Hide Answers": "Show Answers"}
+        </button>
+      </div>)
+      } else {return null}
+  }
+
+  render () {
+    let start = this.state.started ? null : <button className="button button2 middle" onClick={this.selectRandomQuestion}>Start Quiz</button>;
+    let nextQuestion = this.renderNextQuestion();
+    let [Question, Answers] = this.renderQuestion();
     let ques = this.state.started ? ( 
       <div>
         {Question}
