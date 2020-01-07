@@ -28,7 +28,7 @@ class App extends React.Component {
   renderQuestion = () => {
     let Question = null;
     let Answers = null;
-    // dùpozajdùqsdmc
+    // added new comment
     if (this.state.question) {
       Question = <h3>{this.state.question.Question}</h3>;
       Answers = [];
