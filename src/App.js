@@ -52,7 +52,7 @@ class App extends React.Component {
           )
         }
       } else {
-        Answers.push(<div key='moreAnswers' className="moreAnswers">More than one answer possible!</div>)
+        Answers.push(<div key='moreAnswers' className="moreAnswers">{this.state.question.correct.length} answers possible!</div>)
         for (let q in this.state.question.Response) {
           let classes = ["container"];
           if(this.state.showAnswer) {
