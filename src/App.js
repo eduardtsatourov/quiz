@@ -28,7 +28,7 @@ class App extends React.Component {
   renderQuestion = () => {
     let Question = null;
     let Answers = null;
-    // added random comment
+    // added change
     if (this.state.question) {
       Question = <h3>{this.state.question.Question}</h3>;
       Answers = [];
